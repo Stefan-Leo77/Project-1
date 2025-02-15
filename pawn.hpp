@@ -1,4 +1,4 @@
-// File: Pawn.cpp
+// File: Pawn.hpp
 // Author: Stefan Leonardo
 // Date: 2/14/25
 // Implementation of the Pawn class

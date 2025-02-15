@@ -1,5 +1,5 @@
 
-// File: Pawn.hpp
+// File: pawn.cpp
 // Author: Stefan Leonardo
 // Date: 2/14/25
 // A header file that establishes the Pawn class, which is a class of ChessPiece.
@@ -68,5 +68,4 @@ bool Pawn::canPromote() const {
     else {
         return false; // if not at last or top row return false
     }
-    return false; // default return false if no conditions are met
 }

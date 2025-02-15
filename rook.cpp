@@ -4,6 +4,8 @@
 // Implementation of the Rook class
 
 #include "Rook.hpp"
+#include <cmath>
+
 
 /**
  * @brief Default Constructor. By default, Rooks have 3 available castle moves to make
