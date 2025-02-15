@@ -65,7 +65,5 @@ bool Pawn::canPromote() const {
 
     else if(row == 0){ // if at last row moving down return true
             return true;}
-    else {
-        return false; // if not at last or top row return false
-    }
+    return false; // if not at last or top row return false
 }

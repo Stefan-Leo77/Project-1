@@ -34,7 +34,7 @@ Rook::Rook() :
  * @post : The private members are set to the values of the corresponding parameters.
  */
 Rook::Rook(const std::string& color, const int& row, const int& col, const bool& isMovingUp, const int& castleMoves) :
-    ChessPiece(color, row, col, isMovingUp), castle_moves_left_(castleMoves >= 0 ? castleMoves : 0) {} // if castleMoves is negative, set to 0, if 3 remains the same
+    ChessPiece(color, row, col, isMovingUp), castle_moves_left_(castleMoves) {} // if castleMoves is negative, set to 0, if 3 remains the same
 
 /**
  * @brief Determines if this rook can castle with the parameter Chess Piece
