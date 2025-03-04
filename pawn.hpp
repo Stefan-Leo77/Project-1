@@ -17,6 +17,46 @@ public:
      * @brief Default Constructor. All boolean values are default initialized to false.
      * @note Remember to construct the base-class as well!
      */
+/**
+* Default Constructor.
+* NOTE: All previous post conditions still apply.
+* 
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 1
+         * 2) The type member is set to "PAWN"
+         */
+            /**
+         * Default Constructor.
+         * NOTE: All previous post conditions still apply.
+         * 
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 1
+         * 2) The type member is set to "PAWN"
+         */
+            /**
+         * Default Constructor.
+         * NOTE: All previous post conditions still apply.
+         * 
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 1
+         * 2) The type member is set to "PAWN"
+         */
+            /**
+         * Default Constructor.
+         * NOTE: All previous post conditions still apply.
+         * 
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 1
+         * 2) The type member is set to "PAWN"
+         */
+            /**
+         * Default Constructor.
+         * NOTE: All previous post conditions still apply.
+         * 
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 1
+         * 2) The type member is set to "PAWN"
+         */
     Pawn();
 
     /**
@@ -41,8 +81,56 @@ public:
      *   If EITHER of the provided row or col are out-of-bounds,
      *      that is between 0 (inclusive) and BOARD_LENGTH (not inclusive),
      *      then BOTH are set to -1 (regardless of being in-bounds or not).
-     * @note Remember to construct the base-class as well using these parameters!
+     * @note Remember to constb*/
+       /**
+        * Parameterized constructor.
+        * NOTE: All previous parameters & post conditions still apply.
+        *
+        * ADDITIONS: 
+        * 1) The piece_size_ member is set to 1
+        * 2) The type member is set to "PAWN"
+se the b*/
+       /**
+        * Parameterized constructor.
+        * NOTE: All previous parameters & post conditions still apply.
+        *
+        * ADDITIONS: 
+        * 1) The piece_size_ member is set to 1
+        * 2) The type member is set to "PAWN"
+se-class*/
+       /**
+        * Parameterized constructor.
+        * NOTE: All previous parameters & post conditions still apply.
+        *
+        * ADDITIONS: 
+        * 1) The piece_size_ member is set to 1
+        * 2) The type member is set to "PAWN"
+ as well */
+       /**
+        * Parameterized constructor.
+        * NOTE: All previous parameters & post conditions still apply.
+        *
+        * ADDITIONS: 
+        * 1) The piece_size_ member is set to 1
+        * 2) The type member is set to "PAWN"
+using these */
+       /**
+        * Parameterized constructor.
+        * NOTE: All previous parameters & post conditions still apply.
+        *
+        * ADDITIONS: 
+        * 1) The piece_size_ member is set to 1
+        * 2) The type member is set to "PAWN"
+parameters!
      */
+       /**
+        * Parameterized constructor.
+        * NOTE: All previous parameters & post conditions still apply.
+        *
+        * ADDITIONS: 
+        * 1) The piece_size_ member is set to 1
+        * 2) The type member is set to "PAWN"
+        */
     Pawn(const std::string& color, 
          const int& row = -1, 
          const int& col = -1, 

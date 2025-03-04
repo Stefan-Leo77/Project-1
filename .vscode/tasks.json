@@ -7,12 +7,9 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "C:/hw/Project_1/main.cpp",
-                "C:/hw/Project_1/ChessPiece.cpp",
-                "C:/hw/Project_1/pawn.cpp",
-                "C:/hw/Project_1/rook.cpp",
+                "${file}",
                 "-o",
-                "C:/hw/Project_1/main.exe"
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
                 "cwd": "I:/msys64/mingw64/bin"

@@ -17,6 +17,101 @@ public:
      * @brief Default Constructor. By default, Rooks have 3 available castle moves to make
      * @note Remember to default construct the base-class as well!
      */
+/**
+* Default Constructor.
+* NOTE: All previous post conditions still apply.
+* 
+* ADDITIONS: 
+* 1) The piece_size_ member is set to 2
+* 2) The type member is set to "ROOK"
+*/
+/**
+         * NOTE: All previous post conditions still apply.
+         * 
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 2
+         * 2) The type member is set to "ROOK"
+         */
+        /**
+         * Default Constructor.
+         * NOTE: All previous post conditions still apply.
+         * 
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 2
+         * 2) The type member is set to "ROOK"
+         */
+        /**
+         * Default Constructor.
+         * NOTE: All previous post conditions still apply.
+         * 
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 2
+         * 2) The type member is set to "ROOK"
+         */
+        /**
+         * Default Constructor.
+         * NOTE: All previous post conditions still apply.
+         * 
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 2
+         * 2) The type member is set to "ROOK"
+         */
+        /**
+         * Default Constructor.
+         * NOTE: All previous post conditions still apply.
+         * 
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 2
+         * 2) The type member is set to "ROOK"
+         */
+        /**
+         * Default Constructor.
+         * NOTE: All previous post conditions still apply.
+         * 
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 2
+         * 2) The type member is set to "ROOK"
+         */
+        /**
+         * Default Constructor.
+         * NOTE: All previous post conditions still apply.
+         * 
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 2
+         * 2) The type member is set to "ROOK"
+         */
+        /**
+         * Default Constructor.
+         * NOTE: All previous post conditions still apply.
+         * 
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 2
+         * 2) The type member is set to "ROOK"
+         */
+        /**
+         * Default Constructor.
+         * NOTE: All previous post conditions still apply.
+         * 
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 2
+         * 2) The type member is set to "ROOK"
+         */
+        /**
+         * Default Constructor.
+         * NOTE: All previous post conditions still apply.
+         * 
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 2
+         * 2) The type member is set to "ROOK"
+         */
+        /**
+         * Default Constructor.
+         * NOTE: All previous post conditions still apply.
+         * 
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 2
+         * 2) The type member is set to "ROOK"
+         */
     Rook();
 
     /**
@@ -39,8 +134,24 @@ public:
      *   If the provided color parameter is invalid (ie. not alphabetic), it is set to "BLACK"
      *   If EITHER of the provided row or col are out-of-bounds, that is between 0 (inclusive)
      *      and BOARD_LENGTH (not inclusive), then BOTH are set to -1 (regardless of being in-bounds or not).
-     * @note Remember to construct the base-class as well using these parameters!
+     * @note Remember to construct the base-class as well using these par*/
+     /**
+        * Parameterized constructor.
+        * NOTE: All previous parameters & post conditions still apply.
+        *
+        * ADDITIONS: 
+        * 1) The piece_size_ member is set to 2
+        * 2) The type member is set to "ROOK"
+ameters!
      */
+     /**
+        * Parameterized constructor.
+        * NOTE: All previous parameters & post conditions still apply.
+        *
+        * ADDITIONS: 
+        * 1) The piece_size_ member is set to 2
+        * 2) The type member is set to "ROOK"
+        */
     Rook(const std::string& color, 
          const int& row = -1, 
          const int& col = -1, 

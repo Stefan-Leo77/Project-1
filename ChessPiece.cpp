@@ -20,30 +20,45 @@ ChessPiece::ChessPiece() :
     color_("BLACK"), 
     row_(-1), 
     column_(-1), 
-    movingUp_(false) {
-}
+    movingUp_(false), 
+    piece_size_(0), // NEW PIECE SIZE PARAMETER
+    string_type_("NONE"){} // NEW PIECE STRING PARAMETER
 
 /**
- * @brief Parameterized constructor.
- * @param : A const reference to the color of the Chess Piece (a string).
- *     Set the color "BLACK" if the provided string contains ANY non-alphabetic characters. 
- *     If the string is purely alphabetical, it is converted and stored in uppercase
- * @param : The 0-indexed row position of the Chess Piece (as a const reference to an integer).
- *          Default value -1 if not provided.
- * @param : The 0-indexed column position of the Chess Piece (as a const reference to an integer).
- *          Default value -1.
- * @param : A flag indicating whether the Chess Piece is moving up on the board
- *          or not (as a const reference to a boolean). Default value False if not provided.
- * @post : The private members are set to the values of the corresponding parameters. 
- *   If the provided color parameter is invalid (ie. not alphabetic), it is set to "BLACK"
- *   If EITHER of the provided row or col are out-of-bounds, where the bounds are between 0 (inclusive)
- *      and BOARD_LENGTH (not inclusive), then BOTH are set to -1 (regardless of being in-bounds or not).
- */
+* @brief Parameterized constructor.
+* @param : A const reference to the color of the Chess Piece (a string). 
+*          Set the color "BLACK" if the provided string contains 
+*          non-alphabetic characters. If the string is purely alphabetic, 
+*          it is converted and stored in uppercase.
+*
+* @param : The 0-indexed row position of the Chess Piece (as a const 
+*          reference to an integer). Default value -1 if not provided, 
+*          or if the value provided is outside the board's dimensions, 
+*          [0, BOARD_LENGTH).
+*
+* @param : The 0-indexed column position of the Chess Piece (as a const 
+*          reference to an integer). Default value -1 if not provided, 
+*          or if the value provided is outside the board's dimensions, 
+*          [0, BOARD_LENGTH).
+*
+* @param : A flag indicating whether the Chess Piece is moving up on the 
+*          board, or not (as a const reference to a boolean). Default 
+*          value false if not provided.
 
- ChessPiece::ChessPiece(const std::string& color, const int& row, const int& col, const bool& isMovingUp) : 
+* ADDITIONS:
+* @param : An integer representing the size of the current chess piece. 
+*          Default value 0.
+* @param : A string representing the type of the current chess piece. 
+*          Default value "NONE".
+*
+*/
+
+ ChessPiece::ChessPiece(const std::string& color, const int& row, const int& col, const bool& isMovingUp, int size, const std::string& type) : 
  
  movingUp_(isMovingUp) // Initialize movingUp_ with the provided parameter
- 
+ piece_size_(size) // Initialize piece_size_ with the provided parameter
+ type_(type)  // Initialize type_ with the provided parameter
+
  { 
  bool isAlpha = std::all_of(color.begin(), color.end(), ::isalpha); // Check if string contains only alphabetic characters
  if (!isAlpha) {
@@ -165,6 +180,57 @@ bool ChessPiece::isMovingUp() const {
 void ChessPiece::setMovingUp(const bool& flag) {
     movingUp_ = flag;
 }
+
+
+
+/////////////////////////////// PROJECT 2 NEW ADDITIONS /////////////////////////////////
+
+
+/**
+ * @brief Sets the size of the chess piece.
+ * @param size An integer representing the new size of the chess piece.
+ * @note This method does not validate pre-conditions 
+ *       (e.g., checking for negative sizes).
+ * @post The size_ member of the ChessPiece is overridden. No value is returned.
+ */
+
+ int ChessPiece::size() const {
+    return piece_size_;
+}
+
+
+/**
+* @brief Getter for the type_ data member
+* @return The string value stored in type_
+*/
+
+
+std::string ChessPiece::getType() const {
+    return type_;
+}
+
+/**
+* @brief Getter for the piece_size_ data member
+* @return The integer value stored in piece_size_
+*/
+
+void ChessPiece::setSize(int size) {
+    piece_size_ = size;
+}
+
+/**
+ * @brief Sets the type of the chess piece.
+ * @param type A const reference to a string representing the new type of the chess piece 
+ *      (e.g., "ROOK", "PAWN", "NONE").
+ * @note This method does not validate pre-conditions 
+ *      (e.g., checking for caps or symbols in the type string).
+ * @post The type_ member of the ChessPiece is overridden. No value is returned.
+ */
+void ChessPiece::setType(const std::string& type) {
+    type_ = type;
+}
+
+// DISPLAY FUNCTION
 
 /**
  * @brief Displays the chess piece's information in the following format,

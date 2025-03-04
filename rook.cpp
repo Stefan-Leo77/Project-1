@@ -11,10 +11,21 @@
  * @brief Default Constructor. By default, Rooks have 3 available castle moves to make
  * @note Remember to default construct the base-class as well!
  */
+        /**
+         * Default Constructor.
+         * NOTE: All previous post conditions still apply.
+         * 
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 2
+         * 2) The type member is set to "ROOK"
+         */
 Rook::Rook() : 
     ChessPiece(),
     castle_moves_left_(3) {
+    setSize(2);
+    setType("ROOK");
 }
+
 
 /**
  * @brief Parameterized constructor.
@@ -33,12 +44,25 @@ Rook::Rook() :
  *          Default to 3 if no value provided. If a negative value is provided, 0 is used instead.
  * @post : The private members are set to the values of the corresponding parameters.
  */
-Rook::Rook(const std::string& color, const int& row, const int& col, const bool& isMovingUp, const int& castleMoves) :
-    ChessPiece(color, row, col, isMovingUp), castle_moves_left_(castleMoves) {} // if castleMoves is negative, set to 0, if 3 remains the same
 
-/**
- * @brief Determines if this rook can castle with the parameter Chess Piece
- *     This rook can castle with another piece if:
+        /**
+        * Parameterized constructor.
+        * NOTE: All previous parameters & post conditions still apply.
+        *
+        * ADDITIONS: 
+        * 1) The piece_size_ member is set to 2
+        * 2) The type member is set to "ROOK"
+        */
+Rook::Rook(const std::string& color, const int& row, const int& col, 
+           const bool& isMovingUp, const int& castleMoves) 
+    : ChessPiece(color, row, col, isMovingUp, 2, "ROOK")
+    { 
+    castle_moves_left_ = (castleMoves < 0) ? 0 : castleMoves;  // Validate castle moves - ensure non-negative
+}
+
+/**ChessPiece(color, row, col, isMovingUp), castle_moves_left_(castleMoves) , setSize(2), setType("ROOK") {} // if castleMoves is negative, set to 0, if 3 remains the same
+brief Determines if this rook can castle with the parameter Chess Piece
+ * \   This rook can castle with another piece if:
  *        1. It has more than 0 castle moves available
  *        2. Both pieces share the same color
  *        3. Both pieces are considered on-the-board (no -1 rows or columns)
@@ -47,33 +71,18 @@ Rook::Rook(const std::string& color, const int& row, const int& col, const bool&
  * @return True if the rook can castle with the given piece. False otherwise.
  */
 bool Rook::canCastle(const ChessPiece& piece) const {
-    // Check if rook has castle moves available
+    // First check: Must have castle moves remaining
     if (castle_moves_left_ <= 0) {
         return false;
     }
-    // Check if pieces share the same color
+    
+    // Second check: Colors must match
     if (getColor() != piece.getColor()) {
         return false;
     }
 
-    // Check if both pieces are on the board
-    if (getRow() == -1 || getColumn() == -1 || 
-        piece.getRow() == -1 || piece.getColumn() == -1) {
-        return false;
-    }
-
-    // Check if pieces are on the same row
-    if (getRow() != piece.getRow()) {
-        return false;
-    }
-
-    return std::abs(getColumn() - piece.getColumn()) <= 1; // if pass previous checks, then if columns differ by at most 1, return true 
+    // Additional checks for valid castling would go here...
+    // ... existing code ...
 }
 
-/**
- * @brief Gets the value of the castle_moves_left_
- * @return The integer value stored in castle_moves_left_
- */
-int Rook::getCastleMovesLeft() const {
-    return castle_moves_left_;
-}
+// ... rest of implementation ...
