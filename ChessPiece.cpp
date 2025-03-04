@@ -22,7 +22,7 @@ ChessPiece::ChessPiece() :
     column_(-1), 
     movingUp_(false), 
     piece_size_(0), // NEW PIECE SIZE PARAMETER
-    string_type_("NONE"){} // NEW PIECE STRING PARAMETER
+    type_("NONE"){} // NEW PIECE STRING PARAMETER
 
 /**
 * @brief Parameterized constructor.
@@ -53,19 +53,24 @@ ChessPiece::ChessPiece() :
 *
 */
 
- ChessPiece::ChessPiece(const std::string& color, const int& row, const int& col, const bool& isMovingUp, int size, const std::string& type) : 
- 
- movingUp_(isMovingUp) // Initialize movingUp_ with the provided parameter
- piece_size_(size) // Initialize piece_size_ with the provided parameter
- type_(type)  // Initialize type_ with the provided parameter
+ChessPiece::ChessPiece(const std::string& color, 
+    const int& row, 
+    const int& col, 
+    const bool& isMovingUp,
+    const int& pieceSize,
+    const std::string& type) :
 
- { 
+movingUp_(isMovingUp),
+piece_size_(pieceSize), //initialized variables
+type_(type)
+
+{
  bool isAlpha = std::all_of(color.begin(), color.end(), ::isalpha); // Check if string contains only alphabetic characters
  if (!isAlpha) {
      color_ = "BLACK"; } 
  else {
      // Convert the valid color to uppercase and assign it to color_
-     color_ = color;
+     color_ = color; // color_ = color sent to the constructor
      std::transform(color_.begin(), color_.end(), color_.begin(), ::toupper);
  }
 

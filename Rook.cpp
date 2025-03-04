@@ -71,18 +71,26 @@ brief Determines if this rook can castle with the parameter Chess Piece
  * @return True if the rook can castle with the given piece. False otherwise.
  */
 bool Rook::canCastle(const ChessPiece& piece) const {
-    // First check: Must have castle moves remaining
+    // 1. Must have castle moves remaining
     if (castle_moves_left_ <= 0) {
         return false;
     }
     
-    // Second check: Colors must match
+    // 2. Colors must match
     if (getColor() != piece.getColor()) {
         return false;
     }
+    // 3. Both pieces must be on the board
+    if (getRow() == -1 || getColumn() == -1 || 
+        piece.getRow() == -1 || piece.getColumn() == -1) {
+        return false;
+    }
 
-    // Additional checks for valid castling would go here...
-    // ... existing code ...
+    // 4. Must be horizontally adjacent
+    if (getRow() != piece.getRow() || 
+        abs(getColumn() - piece.getColumn()) > 1) {
+        return false;
+    }
+
+    return true;
 }
-
-// ... rest of implementation ...
