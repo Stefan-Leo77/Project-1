@@ -1,4 +1,4 @@
-// File: rook.hpp
+// File: Rook.hpp
 // Author: Stefan Leonardo
 // Date: 2/14/25
 // A header file that establishes the Rook class, which is a derived class of the ChessPiece class.
