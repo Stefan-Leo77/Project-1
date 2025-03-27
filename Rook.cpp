@@ -94,3 +94,11 @@ bool Rook::canCastle(const ChessPiece& piece) const {
 
     return true;
 }
+
+/**
+ * @brief Gets the value of the castle_moves_left_
+ * @return The integer value stored in castle_moves_left_
+ */
+int Rook::getCastleMovesLeft() const {
+    return castle_moves_left_;
+}

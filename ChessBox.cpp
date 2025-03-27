@@ -1,4 +1,5 @@
 #include "ChessBox.hpp"
+#include "ArrayBox.hpp" // Include the ArrayBox header file
 #include <cctype>
 #include <algorithm>
 
@@ -49,9 +50,9 @@ ChessBox::ChessBox(const std::string& color1, const std::string& color2, int cap
         capacity = 64;
     }
     
-    // Initialize ArrayBox members
-    P1_BOX_ = ArrayBox<ChessPiece>(capacity);
-    P2_BOX_ = ArrayBox<ChessPiece>(capacity);
+    // Initialize LinkedBox members
+    P1_BOX_ = LinkedBox<ChessPiece>(capacity);
+    P2_BOX_ = LinkedBox<ChessPiece>(capacity);
 }
 
 // Getter for P1_COLOR
@@ -64,17 +65,34 @@ std::string ChessBox::getP2Color() const {
     return P2_COLOR_;
 }
 
-// Getter for P1_BOX
-ArrayBox<ChessPiece> ChessBox::getP1Pieces() const {
+/**
+ * @brief Getter for P1_BOX
+ * @return The LinkedBox<ChessPiece> (ie. the value) of P1_BOX_
+ */
+LinkedBox<ChessPiece> ChessBox::getP1Pieces() const {
     return P1_BOX_;
 }
 
-// Getter for P2_BOX
-ArrayBox<ChessPiece> ChessBox::getP2Pieces() const {
+/**
+ * @brief Getter for P2_BOX
+ * @return The LinkedBox<ChessPiece> (ie. the value) of P2_BOX_
+ */
+LinkedBox<ChessPiece> ChessBox::getP2Pieces() const {
     return P2_BOX_;
 }
 
-// Add a chess piece to the appropriate box
+/**
+ * @brief Adds a given ChessPiece object to the LinkedBox corresponding to its color:
+ *      - If the color of the given piece matches P1_COLOR_, add it to P1_BOX_
+ *      - If the color of the given piece matches P2_COLOR_, add it to P2_BOX_
+ *      - If the color does not match either box, or the corresponding 
+ *           box doesn't have enough remaining space to add the piece, 
+ *           the add operation fails.
+ * 
+ * @param piece A const reference to a ChessPiece object that is to be added to one of the LinkedBoxes
+ * @return True if the piece was added successfully. False otherwise.
+ *
+ */
 bool ChessBox::addPiece(const ChessPiece& piece) {
     // Get the color of the piece
     std::string piece_color = piece.getColor();
@@ -90,6 +108,17 @@ bool ChessBox::addPiece(const ChessPiece& piece) {
     return false;
 }
 
+
+/**
+ * @brief Removes a ChessPiece of the given type if one 
+ *        exists in the LinkedBox corresponding to the given color
+ * 
+ * @param type A const reference to an uppercase string 
+ *             representing the type of the ChessPiece to remove
+ * @param color A const referene to an uppercase string 
+ *              representing the color of the ChessPiece to remove
+ * @return True if a piece is found and removed. False otherwise. 
+ */
 // Remove a chess piece from the appropriate box
 bool ChessBox::removePiece(const std::string& type, const std::string& color) {
     // Remove from the appropriate box
@@ -103,6 +132,15 @@ bool ChessBox::removePiece(const std::string& type, const std::string& color) {
     return false;
 }
 
+/**
+ * @brief Finds whether a ChessPiece of the given type exists within the LinkedBox corresponding to the given color
+ * 
+ * @param type A const reference to an uppercase string 
+ *             representing the type of the ChessPiece to find
+ * @param color A const referene to an uppercase string 
+ *             representing the color of the ChessPiece to find
+ * @return True if a piece is contained within the correct LinkedBox. False otherwise. 
+ */
 // Check if a chess piece exists in the appropriate box
 bool ChessBox::contains(const std::string& type, const std::string& color) const {
     // Check the appropriate box
