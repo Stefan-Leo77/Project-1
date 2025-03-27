@@ -1,5 +1,4 @@
 #include "ChessBox.hpp"
-#include "ArrayBox.hpp" // Include the ArrayBox header file
 #include <cctype>
 #include <algorithm>
 

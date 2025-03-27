@@ -7,6 +7,7 @@
 #define LINKED_BOX_HPP_
 
 #include <string>
+#include "ChessPiece.hpp"
 
 // Node class for LinkedBox
 template <typename T>
