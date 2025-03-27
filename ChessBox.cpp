@@ -19,12 +19,39 @@ std::string toUpperCase(const std::string& str) {
     return result;
 }
 
-// Default constructor
-ChessBox::ChessBox() : P1_COLOR_("BLACK"), P2_COLOR_("WHITE"), P1_BOX_(64), P2_BOX_(64) {
+/**
+ * Default constructor
+ * Default initializes P1_COLOR_ to "BLACK" and P2_COLOR_ to "WHITE"
+ * Initializes LinkedBox members with capacity 64
+ */
+ChessBox::ChessBox() : 
+    P1_COLOR_("BLACK"), 
+    P2_COLOR_("WHITE"), 
+    P1_BOX_(), 
+    P2_BOX_() {
 }
 
-// Parameterized constructor
-ChessBox::ChessBox(const std::string& color1, const std::string& color2, int capacity) {
+/**
+ * Parameterized Constructor
+ * @param color1 A const reference to the color of the Chess Piece (a string)
+ * @param color2 A const reference to the color of the Chess Piece (a string)
+ * @param capacity An integer describing the 
+ *                capacity of each player's LinkedBox, with default capacity 64.
+ * 
+ * @note 1) If either color1 or color2 contains 
+ *       non-alphabetic characters, set P1_COLOR_ to "BLACK" and P2_COLOR_ to "WHITE"
+ *       2) Otherwise, if the string is purely alphabetic, 
+ *          it is converted and stored in uppercase.* 
+ *       3) However, if the are equal, set color1 to "BLACK" and color2 to "WHITE"
+ *       4) If the specified capacity is not positive (ie. <= 0), 64 is used instead.
+ * 
+ * @post Initializes LinkedBox members with the specified capacity. 
+ *       All strings are initialized as described above. 
+ */
+ChessBox::ChessBox(const std::string& color1, const std::string& color2, int capacity) :
+    P1_BOX_(capacity <= 0 ? 64 : capacity),
+    P2_BOX_(capacity <= 0 ? 64 : capacity) {
+    
     // Check if the colors are alphabetic
     bool color1_alphabetic = isAlphaString(color1);
     bool color2_alphabetic = isAlphaString(color2);
@@ -43,15 +70,6 @@ ChessBox::ChessBox(const std::string& color1, const std::string& color2, int cap
         P1_COLOR_ = "BLACK";
         P2_COLOR_ = "WHITE";
     }
-    
-    // Set the capacity
-    if (capacity <= 0) {
-        capacity = 64;
-    }
-    
-    // Initialize LinkedBox members
-    P1_BOX_ = LinkedBox<ChessPiece>(capacity);
-    P2_BOX_ = LinkedBox<ChessPiece>(capacity);
 }
 
 // Getter for P1_COLOR
@@ -90,7 +108,6 @@ LinkedBox<ChessPiece> ChessBox::getP2Pieces() const {
  * 
  * @param piece A const reference to a ChessPiece object that is to be added to one of the LinkedBoxes
  * @return True if the piece was added successfully. False otherwise.
- *
  */
 bool ChessBox::addPiece(const ChessPiece& piece) {
     // Get the color of the piece
@@ -107,18 +124,16 @@ bool ChessBox::addPiece(const ChessPiece& piece) {
     return false;
 }
 
-
 /**
  * @brief Removes a ChessPiece of the given type if one 
  *        exists in the LinkedBox corresponding to the given color
  * 
  * @param type A const reference to an uppercase string 
  *             representing the type of the ChessPiece to remove
- * @param color A const referene to an uppercase string 
+ * @param color A const reference to an uppercase string 
  *              representing the color of the ChessPiece to remove
  * @return True if a piece is found and removed. False otherwise. 
  */
-// Remove a chess piece from the appropriate box
 bool ChessBox::removePiece(const std::string& type, const std::string& color) {
     // Remove from the appropriate box
     if (color == P1_COLOR_) {
@@ -136,11 +151,10 @@ bool ChessBox::removePiece(const std::string& type, const std::string& color) {
  * 
  * @param type A const reference to an uppercase string 
  *             representing the type of the ChessPiece to find
- * @param color A const referene to an uppercase string 
+ * @param color A const reference to an uppercase string 
  *             representing the color of the ChessPiece to find
  * @return True if a piece is contained within the correct LinkedBox. False otherwise. 
  */
-// Check if a chess piece exists in the appropriate box
 bool ChessBox::contains(const std::string& type, const std::string& color) const {
     // Check the appropriate box
     if (color == P1_COLOR_) {
